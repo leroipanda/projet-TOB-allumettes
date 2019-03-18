@@ -6,16 +6,61 @@ package allumettes;
  * @version	$Revision: 1.5 $
  */
 public class Partie  {
+	
 
 	/** Lancer une partie. En argument sont donnés les deux joueurs sous
 	 * la forme nom@stratégie.
 	 * @param args la description des deux joueurs
 	 */
 	public static void main(String[] args) {
+		Joueur[] tabJoueur = new Joueur[2];
 		try {
 			verifierNombreArguments(args);
 
-			System.out.println("\n\tà faire !\n");
+		//gestion des arguments en entrée 
+			//on ajoute les 2 joueurs
+			for(int i=0 ;i < 2 ;i++){
+				//System.out.println(i);
+				//on cherche si le symbole @ est present 
+				if( args[i].contains("@")){
+					//on sépare au niveau de l'@
+					String[] argumentJoueur = args[i].split("@");
+					System.out.println(argumentJoueur[0]);
+					System.out.println(argumentJoueur[1]);
+					//on ajoute le joueurs en fonction de sa difficulté
+					switch(argumentJoueur[1]){
+					
+					case "Naif" : 
+						tabJoueur[i] = new JoueurNaif(argumentJoueur[0]);
+						break ; 
+					case "Rapide" :
+						tabJoueur[i] = new JoueurRapide(argumentJoueur[0]);
+						break;
+					case "Expert" :
+						tabJoueur[i] = new JoueurExpert(argumentJoueur[0]);
+						break;
+					case "Humain" :
+						tabJoueur[i] = new JoueurHumain(argumentJoueur[0]);
+						break;
+					default : 
+						// lever expetion probleme de dificulte
+					}
+					
+				}
+				else{
+					//ajouter l'exeption format invalide
+				}
+				
+			}
+			//on initialise l'arbitre
+			Arbitre arbitre = new Arbitre(tabJoueur[0],tabJoueur[1]);
+			//on initialise la partie
+			jeuPrincipal jeu = new jeuPrincipal();
+			//on fait demarer la partie
+			arbitre.arbitrer(jeu);
+			
+			
+			
 
 		} catch (ConfigurationException e) {
 			System.out.println();

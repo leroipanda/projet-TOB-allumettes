@@ -12,7 +12,7 @@ public class JoueurExpert extends Joueur {
 	@Override
 	int getPrise(jeuPrincipal jeu) {
 		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 }

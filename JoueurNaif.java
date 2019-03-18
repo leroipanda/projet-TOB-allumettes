@@ -9,13 +9,18 @@ public class JoueurNaif extends Joueur{
 	 
 	public JoueurNaif(String nm) {
 		super(nm);
+		System.out.println("-------");
 		
 	}
 	
 	@Override
 	public int getPrise(jeuPrincipal jeu){ 
 		// 
-		return rnd.nextInt(Jeu.PRISE_MAX)+1;
+		int priseMaxPossible = Math.min(Jeu.PRISE_MAX, jeu.getNombreAllumettes());
+		
+	    System.out.println("---------------"+priseMaxPossible+"----------------");
+		
+		return rnd.nextInt(priseMaxPossible)+1;
 		
 	}
 }

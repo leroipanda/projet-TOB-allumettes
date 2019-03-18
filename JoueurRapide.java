@@ -14,7 +14,7 @@ public class JoueurRapide extends Joueur {
 	@Override
 	int getPrise(jeuPrincipal jeu) {
 		// TODO Auto-generated method stub
-		return 3;
+		return Math.min(3,jeu.getNombreAllumettes());
 		
 	}
 

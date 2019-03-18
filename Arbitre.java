@@ -11,7 +11,69 @@ public class Arbitre {
 		Joueur2 = j2;
 	}
 		public void arbitrer( jeuPrincipal Jeu){
-			
+			while(Jeu.getNombreAllumettes() != 0 ){
+				//la partie est en cours : 
+				
+				//on alterne le tour du joueur 1 et 2 
+				
+				
+				int coup ; // variable qui stocke le coup du joueur avant verification 
+				//c'est le tour du joueur 1
+				System.out.println("Tour de "+Joueur1.getNom()+ " :" +"( il reste " + Jeu.getNombreAllumettes() + " allumettes )" );
+				//tant que le coup n'est pas valide on recommence : 
+				
+				do{
+					
+				coup  = Joueur1.getPrise(Jeu);
+					
+					
+				}while(!coupValide(coup,Jeu));
+				//le coup est valide 
+				//on retire les allumettes
+				try{
+					 Jeu.retirer(coup);
+				 }
+				 catch(CoupInvalideException e ){
+						System.out.println("ce n'est pas normal" );
+					}
+				System.out.println(Joueur1.getNom()+ " prends "+coup + " allumettes" );
+				
+
+				//on regarde si la partie n'est pas finie 
+				if(Jeu.getNombreAllumettes() != 0 ){
+					//c'est le tour du joueur 2	
+					System.out.println("Tour de "+Joueur2.getNom()+ " :" +"( il reste " + Jeu.getNombreAllumettes() + " allumettes )" );
+					do{
+						
+						coup  = Joueur2.getPrise(Jeu);
+							
+							
+						}while(!coupValide(coup,Jeu));
+						//le coup est valide 
+					 //on retire les allumettes
+					 try{
+						 Jeu.retirer(coup);
+					 }
+					 catch(CoupInvalideException e ){
+							System.out.println("ce n'est pas normal" );
+						}
+					 
+						System.out.println(Joueur2.getNom()+ " prends "+coup + " allumettes" );
+					
+					
+					
+				}
+				
+				
+				
+				
+				
+			}
+
+			}
+		
+		public boolean coupValide(int coup ,jeuPrincipal Jeu){
+			return coup <= Jeu.PRISE_MAX || coup > 0;
 		}
 		
 	}
