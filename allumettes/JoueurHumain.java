@@ -1,7 +1,9 @@
 package allumettes;
+import java.util.Scanner;
 
 public class JoueurHumain extends Joueur {
-
+	
+	private Scanner reader = new Scanner(System.in);
 	public JoueurHumain(String nm) {
 		super(nm);
 		// TODO Auto-generated constructor stub
@@ -9,8 +11,9 @@ public class JoueurHumain extends Joueur {
 
 	@Override
 	int getPrise(jeuPrincipal jeu) {
-		// TODO Auto-generated method stub
-		return 1;
+		System.out.print("nombre d'allumettes prisent ?");
+		return reader.nextInt();
+		
 	}
 
 }

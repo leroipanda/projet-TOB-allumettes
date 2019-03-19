@@ -16,5 +16,15 @@ abstract class Joueur {
 	
 	//fonction qui revoie ce que le joueur prend.
 	abstract int getPrise(jeuPrincipal jeu);
+	
+	public void ChangementStrat( Class<Joueur> nouvelleStrat  ) {
+		
+		if (nouvelleStrat.isAssignableFrom(Joueur.class)) {
+			nouvelleStrat a = new nouvelleStrat("a");
+			Joueur a = new nouvelleStrat(this.getNom());
+			
+		}
+		
+	}
 
 }

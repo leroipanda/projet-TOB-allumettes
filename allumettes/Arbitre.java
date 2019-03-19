@@ -4,7 +4,7 @@ public class Arbitre {
 	
 	private Joueur Joueur1 ;
 	private Joueur Joueur2 ;
-	
+	private boolean TourJ1 = false ;
 	public Arbitre(Joueur j1,Joueur j2) {
 		//on affecte les joueurs 
 		Joueur1 = j1;
@@ -19,6 +19,7 @@ public class Arbitre {
 				
 				int coup ; // variable qui stocke le coup du joueur avant verification 
 				//c'est le tour du joueur 1
+				TourJ1 = true;
 				System.out.println("Tour de "+Joueur1.getNom()+ " :" +"( il reste " + Jeu.getNombreAllumettes() + " allumettes )" );
 				//tant que le coup n'est pas valide on recommence : 
 				
@@ -41,7 +42,8 @@ public class Arbitre {
 
 				//on regarde si la partie n'est pas finie 
 				if(Jeu.getNombreAllumettes() != 0 ){
-					//c'est le tour du joueur 2	
+					//c'est le tour du joueur 2
+					TourJ1 =false;
 					System.out.println("Tour de "+Joueur2.getNom()+ " :" +"( il reste " + Jeu.getNombreAllumettes() + " allumettes )" );
 					do{
 						
@@ -68,6 +70,15 @@ public class Arbitre {
 				
 				
 				
+			}
+			//la partie est fini 
+			//on determine le gagnant 
+			System.out.println("-----fin de la partie ------" );
+			if(TourJ1) {
+				System.out.println(Joueur2.getNom()+ " gagne" );
+			}
+			else {
+				System.out.println(Joueur1.getNom()+ " gagne" );
 			}
 
 			}
