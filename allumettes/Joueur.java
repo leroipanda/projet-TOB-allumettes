@@ -3,6 +3,7 @@ package allumettes;
 abstract class Joueur {
 	
 
+
 	private String nom;
 
 	public Joueur(String nm) {
@@ -17,14 +18,21 @@ abstract class Joueur {
 	//fonction qui revoie ce que le joueur prend.
 	abstract int getPrise(jeuPrincipal jeu);
 	
+	
+	/* essaie changement de strat
 	public void ChangementStrat( Class<Joueur> nouvelleStrat  ) {
 		
 		if (nouvelleStrat.isAssignableFrom(Joueur.class)) {
-			nouvelleStrat a = new nouvelleStrat("a");
-			Joueur a = new nouvelleStrat(this.getNom());
+			Class[] cArg = new Class[1];
+			cArg[1] = String.class;
+			nouvelleStrat.getDeclaredConstructor(cArg).newInstance(this.getNom());
+			
+			
 			
 		}
 		
 	}
-
+	*/
+	
+	
 }

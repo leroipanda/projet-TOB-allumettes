@@ -7,7 +7,7 @@ package allumettes;
  */
 public class Partie  {
 	
-
+	
 	/** Lancer une partie. En argument sont donnés les deux joueurs sous
 	 * la forme nom@stratégie.
 	 * @param args la description des deux joueurs
@@ -16,7 +16,17 @@ public class Partie  {
 		Joueur[] tabJoueur = new Joueur[2];
 		try {
 			verifierNombreArguments(args);
-
+			
+			
+			
+			boolean confiant =false ;
+			if (args[0].equals("-confiant")){
+				//System.out.println("je suis confiant");
+				args[0] = args[1];
+				args[1] = args[2];
+				confiant = true;
+			}
+			
 		//gestion des arguments en entrée 
 			//on ajoute les 2 joueurs
 			for(int i=0 ;i < 2 ;i++){
@@ -25,8 +35,8 @@ public class Partie  {
 				if( args[i].contains("@")){
 					//on sépare au niveau de l'@
 					String[] argumentJoueur = args[i].split("@");
-					System.out.println(argumentJoueur[0]);
-					System.out.println(argumentJoueur[1]);
+					//System.out.println(argumentJoueur[0]);
+					//System.out.println(argumentJoueur[1]);
 					//on ajoute le joueurs en fonction de sa difficulté
 					switch(argumentJoueur[1]){
 					
@@ -42,6 +52,9 @@ public class Partie  {
 					case "Humain" :
 						tabJoueur[i] = new JoueurHumain(argumentJoueur[0]);
 						break;
+					case "Tricheur" :
+						tabJoueur[i] = new JoueurTricheur(argumentJoueur[0]);
+						break;
 					default : 
 						// lever expetion probleme de dificulte
 					}
@@ -53,7 +66,7 @@ public class Partie  {
 				
 			}
 			//on initialise l'arbitre
-			Arbitre arbitre = new Arbitre(tabJoueur[0],tabJoueur[1]);
+			Arbitre arbitre = new Arbitre(tabJoueur[0],tabJoueur[1],confiant);
 			//on initialise la partie
 			jeuPrincipal jeu = new jeuPrincipal();
 			//on fait demarer la partie

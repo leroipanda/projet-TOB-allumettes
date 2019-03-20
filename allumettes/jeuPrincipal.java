@@ -19,7 +19,7 @@ public class jeuPrincipal implements Jeu {
 		
 		
 		//coup valide
-		allumettes -= nbPrises;
+		
 		if( nbPrises > this.PRISE_MAX){
 			throw new CoupInvalideException(nbPrises , "superieur à la limite de "+ getNombreAllumettes()); 
 		}
@@ -27,7 +27,7 @@ public class jeuPrincipal implements Jeu {
 			throw new CoupInvalideException( nbPrises, "inferieur à la limite de 0"); 
 		}
 		
-		
+		allumettes -= nbPrises;
 	}
 
 }

@@ -18,7 +18,8 @@ public class JoueurNaif extends Joueur{
 		// 
 		int priseMaxPossible = Math.min(Jeu.PRISE_MAX, jeu.getNombreAllumettes());
 		
-	    System.out.println("---------------"+priseMaxPossible+"----------------");
+
+
 		
 		return rnd.nextInt(priseMaxPossible)+1;
 		
