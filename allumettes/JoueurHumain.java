@@ -1,4 +1,5 @@
 package allumettes;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class JoueurHumain extends Joueur {
@@ -12,8 +13,23 @@ public class JoueurHumain extends Joueur {
 	@Override
 	int getPrise(jeuPrincipal jeu) {
 		System.out.print("nombre d'allumettes prisent ?");
-		return reader.nextInt();
+		int nbPris= 4  ;
+		boolean sortir = false;
+		do {
+			
+			sortir = true;
+		try {
+			//reader.reset();
+			reader.nextLine();
+			nbPris = reader.nextInt();
+		}
+		catch(InputMismatchException e) {
+			sortir = false;
+			System.out.print("vous devez donner un entier");
+		}
 		
+		}while(!sortir);
+		return nbPris;
 	}
 
 }
